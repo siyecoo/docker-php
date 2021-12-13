@@ -196,5 +196,6 @@ log-error               = /var/lib/mysql/mysql.error.log
 ```
 以上是mysql.conf中的日志文件的配置。
 
+
 ## License
 MIT
