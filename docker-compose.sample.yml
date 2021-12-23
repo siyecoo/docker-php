@@ -25,20 +25,20 @@ services:
     networks:
       - default
 
-  php:
+  php73:
     build:
-      context: ./services/php
+      context: ./services/php73
       args:
-        PHP_VERSION: php:${PHP_VERSION}-fpm-alpine
+        PHP_VERSION: php:${PHP73_VERSION}-fpm-alpine
         CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
         PHP_EXTENSIONS: ${PHP73_VERSION}
         TZ: "$TZ"
-    container_name: php
+    container_name: php73
     volumes:
       - ${SOURCE_DIR}:/www/:cached
-      - ${PHP_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
-      - ${PHP_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
-      - ${PHP_LOG_DIR}:/var/log/php
+      - ${PHP73_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      - ${PHP73_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ${PHP73_LOG_DIR}:/var/log/php
       - ${DATA_DIR}/composer:/tmp/composer
     restart: always
     cap_add:
@@ -46,47 +46,47 @@ services:
     networks:
       - default     
 
-  #php72:
-  #  build:
-  #    context: ./services/php72
-  #    args:
-  #      PHP_VERSION: php:${PHP72_VERSION}-fpm-alpine
-  #      CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
-  #      PHP_EXTENSIONS: ${PHP72_VERSION}
-  #      TZ: "$TZ"
-  #  container_name: php72
-  #  volumes:
-  #    - ${SOURCE_DIR}:/www/:cached
-  #    - ${PHP72_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
-  #    - ${PHP72_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
-  #    - ${PHP72_LOG_DIR}:/var/log/php
-  #    - ${DATA_DIR}/composer:/tmp/composer
-  #  restart: always
-  #  cap_add:
-  #    - SYS_PTRACE
-  #  networks:
-  #    - default
+  php72:
+    build:
+      context: ./services/php72
+      args:
+        PHP_VERSION: php:${PHP72_VERSION}-fpm-alpine
+        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
+        PHP_EXTENSIONS: ${PHP72_VERSION}
+        TZ: "$TZ"
+    container_name: php72
+    volumes:
+      - ${SOURCE_DIR}:/www/:cached
+      - ${PHP72_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      - ${PHP72_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ${PHP72_LOG_DIR}:/var/log/php
+      - ${DATA_DIR}/composer:/tmp/composer
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
 
-  #php71:
-  #  build:
-  #    context: ./services/php71
-  #    args:
-  #      PHP_VERSION: php:${PHP71_VERSION}-fpm-alpine
-  #      CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
-  #      PHP_EXTENSIONS: ${PHP71_EXTENSIONS}
-  #      TZ: "$TZ"
-  #  container_name: php71
-  #  volumes:
-  #    - ${SOURCE_DIR}:/www/:rw
-  #    - ${PHP71_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
-  #    - ${PHP71_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
-  #    - ${PHP71_LOG_DIR}:/var/log/php
-  #    - ${DATA_DIR}/composer:/tmp/composer
-  #  restart: always
-  #  cap_add:
-  #    - SYS_PTRACE
-  #  networks:
-  #    - default
+  php71:
+    build:
+      context: ./services/php71
+      args:
+        PHP_VERSION: php:${PHP71_VERSION}-fpm-alpine
+        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
+        PHP_EXTENSIONS: ${PHP71_EXTENSIONS}
+        TZ: "$TZ"
+    container_name: php71
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP71_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      - ${PHP71_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ${PHP71_LOG_DIR}:/var/log/php
+      - ${DATA_DIR}/composer:/tmp/composer
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
 
   mysql:
     image: mysql:${MYSQL_VERSION}
