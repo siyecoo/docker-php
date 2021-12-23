@@ -87,14 +87,3 @@ $ docker ps -a        # 所有容器
 ```
 输出的`NAMES`那一列就是容器的名称，如果使用默认配置，那么名称就是`nginx`、`php71`、`php72`、`php73`、`mysql`等。
 
-
-
-
-
-
-
-
-
-
-## License
-MIT
