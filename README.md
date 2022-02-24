@@ -6,7 +6,7 @@ DOCKER-PHP项目特点：
 2. 可一键选配常用服务：
     - 多PHP版本：PHP7.1、PHP7.2、PHP7.3
     - Web服务：Nginx
-    - 数据库：MySQL5、Redis、
+    - 数据库：MySQL5、Redis、MYSQL-MANAGE 可视化界面管理mysql
 
 
     
