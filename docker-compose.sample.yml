@@ -24,6 +24,26 @@ services:
     restart: always
     networks:
       - default
+  php8:
+    build:
+      context: ./services/php8
+      args:
+        PHP_VERSION: php:${PHP8_VERSION}-fpm
+        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
+        PHP_EXTENSIONS: ${PHP8_EXTENSIONS}
+        TZ: "$TZ"
+    container_name: php8
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP8_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      - ${PHP8_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ${PHP8_LOG_DIR}:/var/log/php
+      - ${DATA_DIR}/composer:/tmp/composer
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
 
   php73:
     build:
@@ -108,13 +128,13 @@ services:
     image: phpmyadmin/phpmyadmin:${MYSQL_MANAGE_VERSION}
     container_name: mysql-manage
     environment:
-      - TZ: ${TZ}
-      - PMA_ARBITRARY=1
-      - MYSQL_USER=${MYSQL_MANAGE_USERNAME}
-      - MYSQL_PASSWORD=${MYSQL_MANAGE_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_MANAGE_ROOT_PASSWORD}
-      - PMA_HOST=${MYSQL_MANAGE_CONNECT_HOST}
-      - PMA_PORT=${MYSQL_MANAGE_CONNECT_PORT}
+      TZ: "$TZ"
+      PMA_ARBITRARY=1
+      MYSQL_USER=${MYSQL_MANAGE_USERNAME}
+      MYSQL_PASSWORD=${MYSQL_MANAGE_PASSWORD}
+      MYSQL_ROOT_PASSWORD=${MYSQL_MANAGE_ROOT_PASSWORD}
+      PMA_HOST=${MYSQL_MANAGE_CONNECT_HOST}
+      PMA_PORT=${MYSQL_MANAGE_CONNECT_PORT}
     ports:
       - "${MYSQL_MANAGE_PORT}:80"
     depends_on:
