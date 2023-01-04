@@ -15,6 +15,7 @@
 │   ├── php73                   PHP73 配置目录 
 │   ├── php72                   PHP72 配置目录
 │   ├── php71                   PHP71 配置目录
+│   ├── php56                   PHP56 配置目录
 │   └── redis                   Redis 配置目录
 ├── logs                        日志目录
 ├── docker-compose.sample.yml   Docker 服务配置示例文件
@@ -37,7 +38,7 @@
 
 然后重新build PHP镜像。
 ```bash
-docker-compose build php71     #php72 php73 3个版本都可以
+docker-compose build php71     #php72 php73 php8 php56 php71 5个版本都可以
 ```
 可用的扩展请看同文件的`env.sample`注释块说明。
 
