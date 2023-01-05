@@ -17,6 +17,7 @@
 │   ├── php71                   PHP71 配置目录
 │   ├── php56                   PHP56 配置目录
 │   └── redis                   Redis 配置目录
+│   └── supervisor              进程管理工具 配置目录
 ├── logs                        日志目录
 ├── docker-compose.sample.yml   Docker 服务配置示例文件
 ├── env.smaple                  环境配置示例文件
