@@ -33,7 +33,6 @@ func (h *Hub) Run() {
 		case client := <-h.unregister:
 			if _, ok := h.clients[client]; ok {
 				delete(h.clients, client)
-				close(client.send)
 			}
 		case <-h.broadcast:
 			for client := range h.clients {
