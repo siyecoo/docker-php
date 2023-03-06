@@ -87,7 +87,6 @@ func (c *Client) writePump() {
 
 	defer func() {
 		c.hub.unregister <- c
-		c.conn.Close()
 		fmt.Println("结束writePump协程")
 	}()
 
